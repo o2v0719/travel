@@ -3,7 +3,7 @@
     <div class="title">热销推荐</div>
     <ul>
       <!-- 1像素边框只需要class里面添加 border-bottom -->
-      <li class="item border-bottom" v-for="item in recommendList" :key="item.id">
+      <li class="item border-bottom" v-for="item in list" :key="item.id">
         <img class="item-img" :src="item.imgUrl" alt="">
         <div class="item-info">
           <p class="item-title">{{item.title}}</p>
@@ -19,28 +19,9 @@
 //import x from ''
 export default {
   name: 'HomeRecommend',
-  data () {
-    return {
-      recommendList: [{
-        id: '0001',
-        imgUrl: 'https://tr-osdcp.qunarzz.com/tr-osd-tr-manager/img/5a11974656794b4715156501be10c1b7.jpg',
-        title: '大连圣亚海洋公园',
-        desc: '浪漫大连首站，浪漫的海洋主题乐园'
-      }, {
-        id: '0002',
-        imgUrl: 'https://tr-osdcp.qunarzz.com/tr-osd-tr-manager/img/5a11974656794b4715156501be10c1b7.jpg',
-        title: '大连圣亚海洋公园',
-        desc: '浪漫大连首站，浪漫的海洋主题乐园'
-      }, {
-        id: '0003',
-        imgUrl: 'https://tr-osdcp.qunarzz.com/tr-osd-tr-manager/img/5a11974656794b4715156501be10c1b7.jpg',
-        title: '大连圣亚海洋公园',
-        desc: '浪漫大连首站，浪漫的海洋主题乐园'
-      }
-
-      ]
-    }
-  },
+  props: {
+    list: Array
+  }
 }
 </script>
 <style lang="stylus" scoped>

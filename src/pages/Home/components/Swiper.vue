@@ -1,8 +1,9 @@
 <template>
   <div class="wrapper">
-    <swiper :options="swiperOption">
+    <!-- v-if="list.length": 当list数组还是空的时候，不要渲染，以防干扰轮播图的原始顺序 -->
+    <swiper :options="swiperOption" v-if="showSwiper">
       <!-- slides -->
-      <swiper-slide v-for="item of swiperList" :key="item.id">
+      <swiper-slide v-for="item of list" :key="item.id">
         <img :src="item.imgUrl" class="swiper-img">
       </swiper-slide>
       <!-- Optional controls -->
@@ -14,21 +15,22 @@
 <script>
 export default {
   name: 'HomeSwiper',
+  props: {
+    list: Array
+  },
   data () {
     return {
       swiperOption: {
         pagination: '.swiper-pagination',
         // 循环轮播
         loop: true
-      },
-      swiperList: [{
-        id: '0001',
-        imgUrl: '//imgs.qunarzz.com/vs_ceph_vcimg/b8c4527c41649814cc4cf86880abba54.jpeg'
-      }, {
-        id: '0002',
-        imgUrl: '//imgs.qunarzz.com/vc/6d/9f/35/b8ad5468f73fd60ec0ced086f6.jpg_92.jpg'
       }
-      ]
+    }
+  },
+  computed: {
+    // 避免在结构里面出现过多逻辑代码，可以使用计算属性替代
+    showSwiper () {
+      return this.list.length
     }
   }
 }
