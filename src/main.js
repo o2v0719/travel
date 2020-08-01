@@ -5,6 +5,8 @@ import router from './router'
 import fastClick from 'fastClick'
 import VueAwesomeSwiper from 'vue-awesome-swiper'
 import 'swiper/dist/css/swiper.css'
+//vuex
+import store from './store'
 
 //此处路径在webpack.base.conf.js中配置过
 import 'styles/reset.css'
@@ -20,6 +22,7 @@ Vue.use(VueAwesomeSwiper)
 new Vue({
   el: '#app',
   router,
+  store,
   components: { App },
   template: '<App/>'
 })

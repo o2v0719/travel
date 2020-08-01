@@ -5,11 +5,10 @@
     </div>
     <div class="search-content" ref="search" v-show="keyword">
       <ul>
-        <li class="search-item border-bottom" v-for="item of list" :key="item.id">
+        <li class="search-item border-bottom" v-for="item of list" :key="item.id" @click="handleCityClick(item.name)">
           {{item.name}}
         </li>
         <li class="search-item border-bottom" v-show="showFlag">
-          <!-- 当list数组的长度为0的时候才显示 -->
           没有找到匹配数据
         </li>
       </ul>
@@ -19,6 +18,7 @@
 
 <script>
 import Bscroll from 'better-scroll'
+import { mapMutations } from 'vuex'
 export default {
   name: 'CitySearch',
   props: {
@@ -58,11 +58,21 @@ export default {
         if (!this.list.length) {
           this.showFlag = true
         }
-      }, 100)
+      }, 1000)
     }
   },
   mounted () {
     this.scroll = new Bscroll(this.$refs.search)
+  },
+  methods: {
+    handleCityClick (city) {
+      // this.$store.commit('changeCity', city)
+
+      this.changeCity(city)
+      this.$router.push('/') // 编程式导航实现页面跳转
+    },
+    // 引入全局store中定义的函数
+    ...mapMutations(['changeCity'])
   }
 }
 </script>

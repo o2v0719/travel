@@ -9,17 +9,21 @@
     </div>
     <router-link to="/city">
       <div class="header-right">
-        {{this.city}}<span class="iconfont iconjiantou"></span>
+        {{this.doubleCity}}<span class="iconfont iconjiantou"></span>
       </div>
     </router-link>
   </div>
 </template>
 
 <script>
+import { mapState, mapGetters } from 'vuex'
+
 export default {
   name: 'HomeHeader',
-  props: {
-    city: String
+  computed: {
+    // 将全局的数据映射为当前组件的计算属性
+    ...mapState(['city']),
+    ...mapGetters(['doubleCity'])
   }
 }
 </script>
@@ -54,7 +58,11 @@ export default {
     border-radius 0.1rem
     color #cccccc
   .header-right
-    width 1.24rem
+    // width 1.8rem
+    padding 0 0.2rem
+    // css3 实现宽度自适应文字
+    // width fit-content
+    min-width 1.04rem
     float right
     text-align center
     color #fff
