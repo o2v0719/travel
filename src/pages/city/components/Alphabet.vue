@@ -47,14 +47,14 @@ export default {
         if (this.timer) {
           clearTimeout(this.timer)
         }
-        // 函数节流: 在time存在值的以后 又又触发了事件，则清除该事件。直到16.67ms周期以后
+        // 函数节流: 在time存在值的以后 又又触发了事件，则清除该事件。直到8ms周期以后
         this.timer = setTimeout(() => {
           const touchY = e.touches[0].clientY - 79
           const index = Math.floor((touchY - this.startY) / 20)
           if (index >= 0 && index < this.letters.length) {
             this.$emit('change', this.letters[index])
           }
-        }, 16.67)
+        }, 8)
         // console.log(startY) // A元素顶部到绿色底部距离
         // console.log(touchY) // 触摸到的元素到绿色底部的距离
         // console.log(index)  // 触摸到的元素到A元素的距离除以每个元素的高度并向下取整，得到触摸到的元素的序号
