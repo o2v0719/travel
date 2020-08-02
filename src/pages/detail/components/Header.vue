@@ -24,11 +24,15 @@ export default {
   },
   activated () {
     // scroll事件发生，就会执行handleScroll事件
+    // 注意此处的window为全局对象
     window.addEventListener('scroll', this.handleScroll)
+  },
+  deactivated () {
+    // 给全局window解绑：当离开当前页面时，不再触发scroll事件
+    window.removeEventListener('scroll', this.handleScroll)
   },
   methods: {
     handleScroll () {
-      // console.log(document.documentElement.scrollTop)
       const top = document.documentElement.scrollTop || document.body.scrollTop
       if (top > 60) {
         let opacity = top / 140
