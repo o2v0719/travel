@@ -6,12 +6,12 @@ Vue.use(Vuex)
 
 const store = new Vuex.Store({
   state,
-  mutations,
-  getters: {
+  mutations
+  /* getters: {
     doubleCity(state) {
       return state.city + ' ' + state.city
     }
-  }
+  } */
   /* actions: {
     changeCity(ctx, city) {
       // console.log(city)
