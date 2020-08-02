@@ -10,22 +10,27 @@
         </div>
       </div>
     </div>
-    <common-gallery :imgs="bannerImgs" v-show="showGallery" @close="handleGalleryClose">
-    </common-gallery>
+    <fade-animation>
+      <!-- co-ga 作为插槽插入fa-an 组件中 -->
+      <common-gallery :imgs="bannerImgs" v-show="showGallery" @close="handleGalleryClose">
+      </common-gallery>
+    </fade-animation>
   </div>
 </template>
 
 <script>
 import CommonGallery from 'common/gallery/Gallery'
+import FadeAnimation from 'common/fade/FadeAnimation'
 export default {
   name: 'DetailBanner',
   props: {
     sightName: String,
     bannerImg: String,
-    bannerImgs: Array
+    bannerImgs: Array,
   },
   components: {
-    CommonGallery
+    CommonGallery,
+    FadeAnimation
   },
   data () {
     return {

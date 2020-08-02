@@ -40,7 +40,7 @@ export default {
       res = res.data
       if (res.ret && res.data) {
         const data = res.data
-        console.log(data)
+        // console.log(data)
         this.sightName = data.sightName
         this.bannerImg = data.bannerImg
         this.galleryImgs = data.gallaryImgs

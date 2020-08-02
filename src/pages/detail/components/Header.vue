@@ -22,18 +22,20 @@ export default {
       }
     }
   },
-  activated () {
+  // activated () {
+  mounted () {
     // scroll事件发生，就会执行handleScroll事件
     // 注意此处的window为全局对象
     window.addEventListener('scroll', this.handleScroll)
   },
-  deactivated () {
+  // deactivated () {
+  destroyed () {
     // 给全局window解绑：当离开当前页面时，不再触发scroll事件
     window.removeEventListener('scroll', this.handleScroll)
   },
   methods: {
     handleScroll () {
-      const top = document.documentElement.scrollTop || document.body.scrollTop
+      const top = document.documentElement.scrollTop || document.body.scrollTop || window.pageYOffset
       if (top > 60) {
         let opacity = top / 140
         opacity = opacity > 1 ? 1 : opacity
